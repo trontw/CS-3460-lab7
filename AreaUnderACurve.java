@@ -48,11 +48,7 @@ public class AreaUnderACurve {
 			d = c - (n -m)*f(n) + (p - m)*f(p) + (n - p)*f(n);
 			//System.out.println("d = "+d);
 		}
-		//if (Math.abs(d -c) > error) {
-			//System.out.println("Start of max: "+b);
-		//}
-		// Next, call 2 inserts to insert the two new intervals into the priority queue.
-		return d; // Remove this statement and return the computed area.
+		return d;
 	}
 
 	public static void main(String [] args) {
