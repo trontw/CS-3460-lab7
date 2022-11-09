@@ -29,7 +29,14 @@ public class PriorityDriver {
     x.insert(new Interval(8, 28));
     x.insert(new Interval(9, 32));
     x.insert(new Interval(10, 36));
-    System.out.println("The entire heap is");
+    //System.out.println("The entire heap is");
+    //x.print();
+    Interval max = x.remove_max();
+    System.out.println("The max is "+max);
+    max = x.remove_max();
+    System.out.println("The max is "+max);
+    //max = x.remove_max();
+    //System.out.println("The max is "+max);
     x.print();
     }
 }
