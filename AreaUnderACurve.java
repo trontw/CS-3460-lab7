@@ -28,25 +28,25 @@ public class AreaUnderACurve {
 			// Next, remove max from the Priority Queue
 			Interval max = x.remove_max();//take largest interval
 			double max_d = max.getLength();
-			System.out.println("Length of max is "+max_d);
+			//System.out.println("Length of max is "+max_d);
 
 			// Getting First Large interval values
 			c = max.getLength()*f(max.getEnd());
-			System.out.println("c =  "+c);
+			//System.out.println("c =  "+c);
 			m = max.getStart();
-			System.out.println("Start of max: "+m); 
+			//System.out.println("Start of max: "+m); 
 			n = max.getEnd();
-			System.out.println("End of max: "+n);
+			//System.out.println("End of max: "+n);
 
 			// Next, break Large Interval in half, then reinsert those halves
 			// back into the Priority Queue. 
 			p = (m + n)/2;
 			x.insert(new Interval(m, p));
 			x.insert(new Interval(p, n));
-			System.out.println("Half of max, p = "+p);
+			//System.out.println("Half of max, p = "+p);
 			// Calculate the Area Under the Curve
 			d = c - (n -m)*f(n) + (p - m)*f(p) + (n - p)*f(n);
-			System.out.println("d = "+d);
+			//System.out.println("d = "+d);
 		}
 		//if (Math.abs(d -c) > error) {
 			//System.out.println("Start of max: "+b);

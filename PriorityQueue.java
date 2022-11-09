@@ -122,8 +122,8 @@ public class PriorityQueue {
 		//System.out.println("Parent p is "+p);
 		//System.out.println("Lch is "+Lch);
 		//System.out.println("Rch is "+Rch);
-		System.out.println("Left child is "+heap[Lch]);
-		System.out.println("Right child is "+heap[Rch]);
+		//System.out.println("Left child is "+heap[Lch]);
+		//System.out.println("Right child is "+heap[Rch]);
 		/*
 		First find the larger priority child, then compare to parent.
 		If parent priority is smaller than the child, we will sift-down
@@ -134,9 +134,9 @@ public class PriorityQueue {
 		if (heap[i] == null) return;
 		if ((heap[Rch] != null && heap[Rch].compareTo(heap[Lch]) > 0)) {
 			//If greater, then see if parent is greater than Right Child, if so, sift-down.
-			System.out.println("Right child bigger than Left");
+			//System.out.println("Right child bigger than Left");
 			if ((heap[p] != null && heap[p].compareTo(heap[Rch]) < 0)) {
-				System.out.println("parent smaller than Right child");
+				//System.out.println("parent smaller than Right child");
 				Interval tmp = heap[Rch];
 				heap[Rch] = heap[p];
 				heap[p] = tmp;
@@ -153,9 +153,9 @@ public class PriorityQueue {
 		//Next, compare if Left child is greater than Left child
 		} else if ((heap[Lch] != null && heap[Rch] != null && heap[Lch].compareTo(heap[Rch]) > 0)) {
 			//If greater, then see if parent is greater than Left Child, if so, sift-down.
-			System.out.println("Left child bigger than Right");
+			//System.out.println("Left child bigger than Right");
 			if ((heap[p] != null && heap[p].compareTo(heap[Lch]) < 0)) {
-				System.out.println("parent smaller than Left child");
+				//System.out.println("parent smaller than Left child");
 				Interval tmp = heap[Lch];
 				heap[Lch] = heap[p];
 				heap[p] = tmp;
