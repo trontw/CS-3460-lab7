@@ -19,7 +19,7 @@ public class AreaUnderACurve {
 		double p = 0.0;
 		double m = 0.0;
 		double n = 0.0;
-		int s = 100000;
+		int s = 1000;
 		// Insert first Interval into the Priority Queue
 		PriorityQueue x = new PriorityQueue(s);
 		x.insert(new Interval(a, b));
