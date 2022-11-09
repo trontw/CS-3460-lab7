@@ -24,17 +24,19 @@ public class PriorityQueue {
 			// Expand the buffer allocated for the heap to 
 			// another buffer that is twice as big. 
 			int new_size = 2 * size;//Double the table size;
-			PriorityQueue x = new PriorityQueue(new_size);
+			Interval [] tmp = new Interval[new_size];
 			for (int i = 0; i < numElements; ++i){
-				x.insert(heap[i]);
+				tmp[i] = heap[i];
 			}
+			heap = tmp;
 		}
 		// Insert without buffer expansion here.
 		// First, place the new node at the end of the heap.
 		//if (( k != null) && (k.getLength() > 0)){
 		//System.out.println("numElements = "+numElements);
 		int num = numElements;
-		heap[numElements] = k;
+		if (numElements > 0 || k != null)
+			heap[numElements] = k;
 		numElements++;
 		//siftUp((int) k.getLength());
 		siftUp(num);
@@ -149,7 +151,7 @@ public class PriorityQueue {
 				//return;
 			}
 		//Next, compare if Left child is greater than Left child
-		} else if ((heap[Lch] != null && heap[Lch].compareTo(heap[Rch]) > 0)) {
+		} else if ((heap[Lch] != null && heap[Rch] != null && heap[Lch].compareTo(heap[Rch]) > 0)) {
 			//If greater, then see if parent is greater than Left Child, if so, sift-down.
 			System.out.println("Left child bigger than Right");
 			if ((heap[p] != null && heap[p].compareTo(heap[Lch]) < 0)) {
