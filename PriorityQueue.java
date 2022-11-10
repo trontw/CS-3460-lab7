@@ -23,12 +23,13 @@ public class PriorityQueue {
 		if (numElements == size) {
 			// Expand the buffer allocated for the heap to 
 			// another buffer that is twice as big. 
-			int new_size = 2 * size;//Double the table size;
-			Interval [] tmp = new Interval[new_size];
+			//int new_size = 2 * size;//Double the table size;
+			Interval [] tmp = new Interval[size * 2 + 1];
 			for (int i = 0; i < numElements; ++i){
 				tmp[i] = heap[i];
 			}
 			heap = tmp;
+			size += size;
 		}
 		// Insert without buffer expansion here.
 		// First, place the new node at the end of the heap.
