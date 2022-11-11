@@ -36,8 +36,8 @@ public class PriorityQueue {
 		//if (( k != null) && (k.getLength() > 0)){
 		//System.out.println("numElements = "+numElements);
 		int num = numElements;
-		if (numElements > 0 || k != null)
-			heap[numElements] = k;
+		//if (numElements > 0 || k != null)
+		heap[numElements] = k;
 		numElements++;
 		//siftUp((int) k.getLength());
 		siftUp(num);
@@ -91,17 +91,8 @@ public class PriorityQueue {
 		sift-up the child, then check again, recursively until
 		the child is greater length than the parent.
 		 */ 
-		//System.out.println("Input i is "+i);
-		//System.out.println("Parent p is "+p);
-		//System.out.println("parent is "+heap[p]);
-		//System.out.println("child is "+heap[i]);
-		//System.out.println("------------------------------------------------------");
-		// First node inserted, parent will be null and i = 0, 
-		// so can't call compareTo, and don't siftUp (nothing to sift)
 		if (heap[p] == null || heap[i] == null || heap[p].compareTo(heap[i]) >= 0) {
-			//System.out.println("WHAAAT");
-			//System.out.println("---------Q-after WHAAAAT-----------");
-			//print();
+
 			return;
 		// If parent < child, swap and continue sifting up.
 	  	} else if (heap[i] != null && heap[p] != null && heap[p].compareTo(heap[i]) < 0) {
@@ -109,8 +100,6 @@ public class PriorityQueue {
 			Interval tmp = heap[p];//save parent node
 			heap[p] = heap[i];//swap parent with the child
 			heap[i] = tmp;//parent is now in the child node
-			//System.out.println("---------Q-after Comparing-----------");
-			//print();
 			siftUp(p);
 		} 
 	}
@@ -119,12 +108,6 @@ public class PriorityQueue {
 		int p = getParent(i) + 1;
 		int Rch = getRightChild(i);
 		int Lch = getLeftChild(i);
-		//System.out.println("Input i is "+i);
-		//System.out.println("Parent p is "+p);
-		//System.out.println("Lch is "+Lch);
-		//System.out.println("Rch is "+Rch);
-		//System.out.println("Left child is "+heap[Lch]);
-		//System.out.println("Right child is "+heap[Rch]);
 		/*
 		First find the larger priority child, then compare to parent.
 		If parent priority is smaller than the child, we will sift-down
@@ -133,7 +116,7 @@ public class PriorityQueue {
 		*/
 		//Initially compare if Right child is greater than Left child
 		if (heap[i] == null) return;
-		if ((heap[Rch] != null && heap[Rch].compareTo(heap[Lch]) > 0)) {
+		if ((getLeftChild(i) < size && getRightChild(i) < size && heap[Rch] != null && heap[Rch].compareTo(heap[Lch]) > 0)) {
 			//If greater, then see if parent is greater than Right Child, if so, sift-down.
 			//System.out.println("Right child bigger than Left");
 			if ((heap[p] != null && heap[p].compareTo(heap[Rch]) < 0)) {
@@ -141,18 +124,14 @@ public class PriorityQueue {
 				Interval tmp = heap[Rch];
 				heap[Rch] = heap[p];
 				heap[p] = tmp;
-				++p;
-				if (p == numElements -1){
-					return;
-				} else {
-					siftDown(p);
-				}
-			} else if (heap[p] != null && heap[Rch] != null && (heap[p].compareTo(heap[Rch]) >= 0)) {
 				siftDown(Rch);
-				//return;
+
+			} else if (heap[p] != null && heap[Rch] != null && (heap[p].compareTo(heap[Rch]) > 0)) {
+				siftDown(Rch);
+				
 			}
 		//Next, compare if Left child is greater than Left child
-		} else if ((heap[Lch] != null && heap[Rch] != null && heap[Lch].compareTo(heap[Rch]) > 0)) {
+		} else if ((getLeftChild(i) < size && getRightChild(i) < size && heap[Lch] != null && heap[Rch] != null && heap[Lch].compareTo(heap[Rch]) > 0)) {
 			//If greater, then see if parent is greater than Left Child, if so, sift-down.
 			//System.out.println("Left child bigger than Right");
 			if ((heap[p] != null && heap[p].compareTo(heap[Lch]) < 0)) {
@@ -160,25 +139,15 @@ public class PriorityQueue {
 				Interval tmp = heap[Lch];
 				heap[Lch] = heap[p];
 				heap[p] = tmp;
-				++p;
-				if (p == numElements -1){
-					return;
-				} else {
-					siftDown(p);
-				}
-
+				siftDown(Lch);
 			}
-		} else if (heap[p] != null && heap[Lch] != null &&((heap[p].compareTo(heap[Lch])) >= 0)){
+		} else if (getLeftChild(i) < size && heap[p] != null && heap[Lch] != null &&((heap[p].compareTo(heap[Lch])) > 0)){
 			siftUp(Lch);
-			//return;
+			
 		} else {
 			return;
 			//System.out.println("Cannot have Right and Left children with same length! - error");
 		}
-	}
-
-	public void swap(int i, int k){
-		//code to swap parent with child
 	}
 
 	/**
