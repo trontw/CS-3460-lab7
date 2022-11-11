@@ -35,8 +35,23 @@ public class PriorityDriver {
     System.out.println("The max is "+max);
     max = x.remove_max();
     System.out.println("The max is "+max);
-    //max = x.remove_max();
-    //System.out.println("The max is "+max);
+    max = x.remove_max();
+    System.out.println("The max is "+max);
+    max = x.remove_max();
+    System.out.println("The max is "+max);
+    max = x.remove_max();
+    System.out.println("The max is "+max);
+    max = x.remove_max();
+    System.out.println("The max is "+max);
+    max = x.remove_max();
+    System.out.println("The max is "+max);
+    max = x.remove_max();
+    System.out.println("The max is "+max);
+    max = x.remove_max();
+    System.out.println("The max is "+max);
+    x.print();
+    max = x.remove_max();
+    System.out.println("The max is "+max);
     x.print();
     }
 }

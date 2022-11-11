@@ -13,7 +13,7 @@ public class AreaUnderACurve {
 		Returns an approximation for the area under the curve f(x) between x = a and x = b.
 	*/
 	private static double computeArea(double a, double b) {
-		double error = 1e-14;//1e-05; // This is the comparison error. See document for description.
+		double error = 1e-13;//1e-05; // This is the comparison error. See document for description.
 		double d = 1.0;
 		double c = 0.0;
 		double p = 0.0;
@@ -26,7 +26,8 @@ public class AreaUnderACurve {
 		x.insert(max);
 		c = (max.getLength())*f(max.getEnd());
 		//c = (b - a) * f(b);
-		while (d > 0) {
+		int i = 0;
+		while (true) {
 			// Next, remove max from the Priority Queue
 			max = x.remove_max();//take largest interval
 			// Getting First Large interval values
@@ -35,13 +36,16 @@ public class AreaUnderACurve {
 			
 			// Next, break Large Interval in half 
 			p = ((m + n)/2);
-	
+			//c = (max.getLength())*f(max.getEnd());
+			//System.out.println("c is now = "+c);
 			// d = new area
 			// c = old area
 			// Calculate the Area Under the Curve
 			d = c - (n - m)*f(n) + (p - m)*f(p) + (n - p)*f(n);
+			//System.out.println("c is now = "+c);
+			//System.out.println("d is now = "+d);
 			//Reinsert the new halves back into the Priority Queue.
-			if (Math.abs(d - c) <= error) {
+			if (Math.abs(d - c) < error) {
 				return d;
 			} else {
 				x.insert(new Interval(m, p));
@@ -49,7 +53,7 @@ public class AreaUnderACurve {
 				c = d;
 			}
 		}
-		return d;
+		//return d;
 	}
 
 	public static void main(String [] args) {
